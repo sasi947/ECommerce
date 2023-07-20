@@ -1,0 +1,94 @@
+/* Basic styling */
+.add-product {
+    max-width: 600px; /* Increase the maximum width to your desired value */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #0a8aae;
+    border-radius: 10px;
+    border-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-product h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .form-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  textarea.form-input {
+    resize: vertical;
+  }
+  
+  .form-button {
+    display: block;
+    width: 50%;
+    padding: 12px;
+    background-color: #ffffff;
+    color: #040000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    ;
+  }
+  
+  .form-button:hover {
+    background-color: #cacdd0;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .message-p,
+  .form-input,
+  .form-button {
+    animation: fadeInUp 0.5s ease;
+  }
+  
+  /* Additional Animations */
+  .add-product {
+    animation: fadeIn 1s ease; /* Fade-in effect when the element is loaded */
+  }
+  
+  /* Hover effect on input elements */
+  .form-input:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover effect on the button */
+  .form-button:hover {
+    background-color: #d7dbe0;
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
