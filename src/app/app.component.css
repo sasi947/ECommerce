@@ -1,0 +1,51 @@
+/* Styling for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #063568;
+    color: #fff;
+  }
+  
+  /* Styling for the logo */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Styling for the navigation links */
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  /* Styling for the search bar */
+  .search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .search-container input {
+    border: none;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    width: 200px;
+  }
+  
+  .search-container input::placeholder {
+    color: #fff;
+  }
+  
+  /* Styling for the search icon (optional) */
+  /* If you want to include a search icon, you can use an <i> element with a search icon class or use an image. */
+  

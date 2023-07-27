@@ -1,0 +1,32 @@
+<!-- login-container: This is the main container for the login form. -->
+<div class="login-container">
+
+    <!-- h2: Heading displaying "Login". -->
+    <h2>Login</h2>
+  
+    <!-- login-form: This form will be submitted when the "Login" button is clicked. -->
+    <form (ngSubmit)="onSubmit()" class="login-form">
+  
+      <!-- form-group: Container for the username input field. -->
+      <div class="form-group">
+        <!-- label for username input field. -->
+        <label for="username">Username:</label>
+  
+        <!-- username input field. It binds to the 'username' property using ngModel. -->
+        <input type="text" id="username" name="username" [(ngModel)]="username" required>
+      </div>
+  
+      <!-- form-group: Container for the password input field. -->
+      <div class="form-group">
+        <!-- label for password input field. -->
+        <label for="password">Password:</label>
+  
+        <!-- password input field. It binds to the 'password' property using ngModel. -->
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+  
+      <!-- button: This button triggers the form submission when clicked. -->
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  

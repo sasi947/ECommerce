@@ -1,0 +1,16 @@
+<!-- Display the content when productDetails is available (not null) -->
+<div *ngIf="productDetails" class="delete-product-container">
+  <h2 class="delete-product-title">Delete Product</h2>
+  <p class="delete-product-message">Are you sure you want to delete the product "{{ productDetails.name }}"?</p>
+  
+  <!-- Button to confirm the delete action -->
+  <button class="delete-button" (click)="onDelete()">Delete</button>
+  
+  <!-- Button to cancel the delete action -->
+  <button class="cancel-button" (click)="onCancel()">Cancel</button>
+</div>
+
+<!-- Display a message when productDetails is not available (null) -->
+<div *ngIf="!productDetails" class="product-not-found">
+  <p>Product not found.</p>
+</div>

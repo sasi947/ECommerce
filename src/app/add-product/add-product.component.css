@@ -1,0 +1,75 @@
+/* Reset some default styles to ensure consistent appearance */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Basic form styles */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input fields and textarea styles */
+input[type="text"],
+textarea,
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Allow vertical resizing for the description field */
+textarea {
+  resize: vertical;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styles for the submit button */
+button[type="submit"] {
+  background-color: #023469;
+  margin-top: 10px;
+}
+
+/* Styling for the categories select */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Styling for the "Add New Category" button */
+button[type="button"] {
+  background-color: #023469;
+  margin-top: 5px;
+  max-width: fit-content;
+}

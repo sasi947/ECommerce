@@ -1,34 +1,27 @@
-<div class="product-list">
-    <h1>Product List</h1>
-    <p class="message-p">{{ productMessage }}</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Color</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of productList">
-          <td><img src="{{ item.image }}" /></td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.price }}</td>
-          <td>{{ item.color }}</td>
-          <td>{{ item.category }}</td>
-          <td>{{ item.description }}</td>
-          <td>
-            <!-- <fa-icon (click)="deleteProduct(item.id)" [icon]="icon"></fa-icon> -->
-            <!-- <a class="adjust-update-link" routerLink="/seller-update-product/{{ item.id }}"><fa-icon [icon]="iconEdit"></fa-icon></a> -->
-            <button (click)="deleteProduct(item.id)">delete</button>
-            <a routerLink="/seller-update-product/{{ item.id }}"> <button>update</button></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+<!-- header: Header section of the web page. -->
+<header>
+
+  <!-- h1: Heading displaying the title "Shop Smart". -->
+  <h1>Shop Smart</h1>
+
+  <!-- nav: Navigation section of the header. -->
+  <nav>
+
+    <!-- ul: Unordered list for the navigation links. -->
+    <ul>
+
+      <!-- a with routerLink attribute: Link to navigate to the "Add Product" page. -->
+      <a routerLink="/addProduct">Add Product</a>
+
+      <!-- a with routerLink attribute: Link to navigate to the "Product List" page. -->
+      <a routerLink="/productlist">List</a>
+
+      <!-- a with (click) event handler: Button for the "Logout" action. -->
+      <a (click)="logout()" class="button">Logout</a>
+
+      <!-- a with routerLink attribute: Link to navigate to the "Notifications" page. -->
+      <a routerLink="/alert">Notifications</a>
+
+    </ul>
+  </nav>
+</header>

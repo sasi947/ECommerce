@@ -1,0 +1,64 @@
+<nav class="navbar">
+  <div class="nav">
+    <img src="../../assets/champion-7-logo (1).png" class="brand-logo" alt="">
+    <div class="nav-items">
+      <div class="nav-search">
+        <!-- Search Input -->
+        <input type="text" #searchInput (keyup)="searchProduct($event)" (blur)="hideSearch()" placeholder="Search Products" />
+        <!-- Search Button -->
+        <button (click)="submitSearch(searchInput.value)">Search</button>
+
+        <!-- Suggested Search Results -->
+        <ul class="suggested-search" *ngIf="searchResult">
+          <!-- Iterate through search results and display as suggestions -->
+          <li *ngFor="let item of searchResult">
+            <a (mousedown)="redirectToDetails(item.id)">{{item.name}}</a>
+          </li>
+        </ul>
+      </div> 
+
+      <!-- Navigation Links -->
+      <ul>
+        <!-- Home Link -->
+        <li>
+          <div class="image-container">
+            <a routerLink="/header">
+              <img src="../../assets/home.png" alt="Home" width="30px">
+              <div class="image-text">Home</div>
+            </a>
+          </div>
+        </li>
+
+        <!-- My Orders Link -->
+        <li>
+          <div class="image-container">
+            <a routerLink="/orders">
+              <img src="../../assets/orders.png" alt="orders" width="50px">
+              <div class="image-text">My Orders</div>
+            </a>
+          </div>
+        </li>
+
+        <!-- Cart Link -->
+        <li>
+          <div class="image-container">
+            <a routerLink="/cart">
+              <img src="../../assets/cart.png" alt="cart" width="50px">
+              <div class="image-text">Cart</div>
+            </a>
+          </div>
+        </li>
+
+        <!-- Logout Link -->
+        <li>
+          <div class="image-container">
+            <a (click)="logout()" class="button">
+              <img src="../../assets/logout.png" alt="logout" width="30px">
+            </a>
+            <div class="image-text">Logout</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

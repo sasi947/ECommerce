@@ -1,0 +1,39 @@
+<app-user-home></app-user-home>
+
+<!-- Container to display the cart items -->
+<div class="cart-container">
+  <h2>Your Cart</h2>
+  
+  <!-- Display cart items if there are items in the cart; otherwise, show "emptyCart" template -->
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <!-- Loop through each cart item and display its details -->
+    <div *ngFor="let cartItem of cartItems; let i = index" class="cart-item">
+      <div class="item-details">
+        <!-- Display cart item details: name, color, description, price, quantity, stock, and a remove button -->
+        <h4>{{ cartItem.name }}</h4>
+        <p>Color: {{ cartItem.color }}</p>
+        <p>Description: {{ cartItem.description }}</p>
+        <p>Price: ${{ cartItem.price }}</p>
+        <p>Quantity: <input type="number" [(ngModel)]="cartItem.quantity" (change)="updateQuantity(i, cartItem.quantity)" /></p>
+        <p>Stock: {{ cartItem.quantity }}</p>
+        <button (click)="removeFromCart(i)">Remove</button>
+      </div>
+    </div>
+    
+    <!-- Display the total price of all cart items -->
+    <div class="cart-total">
+      <p>Total: ${{ getTotalPrice() }}</p>
+    </div>
+    
+    <!-- Cart action buttons: clear cart and checkout -->
+    <div class="cart-buttons">
+      <button (click)="clearCart()">Clear Cart</button>
+      <button (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+  
+  <!-- If the cart is empty, show this template -->
+  <ng-template #emptyCart>
+    <p align="center">Your cart is empty.</p>
+  </ng-template>
+</div>

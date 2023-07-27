@@ -1,87 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { product } from '../data-type';
-import { ProductService } from '../services/product.service';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  menuType: string = 'default';
-  sellerName: string = '';
-  userName: string = '';
-  searchResult: product[] | undefined;
-  cartItems = 0;
+export class HeaderComponent {
+  isAdmin: boolean = false; // Set this based on the user's role after login
 
-  constructor(private router: Router, private productService: ProductService) {}
+  // Assuming you have a FormControl for the search input
+  control: FormControl = new FormControl();
 
-  ngOnInit(): void {
-    this.router.events.subscribe((val: any) => {
-      if (val.url) {
-        if (localStorage.getItem('seller') && val.url.includes('seller')) {
-          const sellerStore = localStorage.getItem('seller');
-          const sellerData = sellerStore ? JSON.parse(sellerStore)[0] : null;
-          this.sellerName = sellerData ? sellerData.name : '';
-          this.menuType = 'seller';
-        } else if (localStorage.getItem('user')) {
-          const userStore = localStorage.getItem('user');
-          const userData = userStore ? JSON.parse(userStore) : null;
-          this.userName = userData ? userData.name : '';
-          this.menuType = 'user';
-          if (userData) {
-            this.productService.getCartList(userData.id);
-          }
-        } else {
-          this.menuType = 'default';
-        }
-      }
-    });
+  // Assuming you have an Observable of filtered streets for the autocomplete
+  filteredStreets: Observable<string[]>;
 
-    const cartData = localStorage.getItem('localCart');
-    if (cartData) {
-      this.cartItems = JSON.parse(cartData).length;
-    }
+  constructor(private router: Router) { }
 
-    this.productService.cartData.subscribe((items) => {
-      this.cartItems = items.length;
-    });
-  }
-
-  logout(): void {
-    localStorage.removeItem('seller');
+  logout() {
+    // Implement your logout logic here
+    // For example, navigate to the login page after logout
     this.router.navigate(['/']);
-  }
-
-  userLogout(): void {
-    localStorage.removeItem('user');
-    this.router.navigate(['/user-auth']);
-    this.productService.cartData.next([]);
-  }
-
-  searchProduct(query: KeyboardEvent): void {
-    if (query) {
-      const element = query.target as HTMLInputElement;
-      this.productService.searchProduct(element.value).subscribe((result) => {
-        if (result.length > 5) {
-          result.length = 5;
-        }
-        this.searchResult = result;
-      });
-    }
-  }
-
-  hideSearch(): void {
-    this.searchResult = undefined;
-  }
-
-  redirectToDetails(id: number): void {
-    this.router.navigate(['/details/' + id]);
-  }
-
-  submitSearch(val: string): void {
-    console.warn(val);
-    this.router.navigate([`search/${val}`]);
   }
 }

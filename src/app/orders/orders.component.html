@@ -1,0 +1,54 @@
+<!-- app-user-home: This is a custom component representing the user's home page. -->
+<app-user-home></app-user-home>
+
+<!-- br: Line break to add space between the components. -->
+
+<!-- h2: Heading displaying "Order History", aligned to the center. -->
+<h2 align="center">Order History</h2>
+
+<!-- order-history-container: Container for displaying order history. -->
+<div class="order-history-container">
+  <!-- ng-container with *ngIf directive to conditionally display orders. -->
+  <ng-container *ngIf="orders.length > 0">
+
+    <!-- order-card: Container for each individual order. Repeated using *ngFor directive for each 'order' in 'orders'. -->
+    <div class="order-card" *ngFor="let order of orders">
+      <!-- order-card-header: Container for order-specific information. -->
+      <div class="order-card-header">
+        <!-- h3: Heading displaying "Order ID" followed by the specific 'order.id'. -->
+        <h3 class="order-id">Order ID: {{ order.id }}</h3>
+        <!-- p: Paragraph displaying "Payment Mode" followed by the specific 'order.paymentDetails.paymentMode'. -->
+        <p class="shipping-details">Payment Mode: {{ order.paymentDetails.paymentMode }}</p>
+      </div>
+
+      <!-- hr: Horizontal rule to separate header from the rest of the order details. -->
+      <hr>
+
+      <!-- p: Paragraph displaying "Shipping Details" header. -->
+      <p>Shipping Details:</p>
+      <!-- p: Paragraph displaying specific shipping details for the order. -->
+      <p>Name: {{ order.shippingDetails.name }}</p>
+      <p>Mobile: {{ order.shippingDetails.mobile }}</p>
+      <p>Email: {{ order.shippingDetails.Email }}</p>
+      <p>Address: {{ order.shippingDetails.address }}</p>
+
+      <!-- h4: Heading displaying "Order Items". -->
+      <h4>Order Items:</h4>
+
+      <!-- order-items: Container for displaying individual items in the order. Repeated using *ngFor directive for each 'item' in 'order.cartItems'. -->
+      <div class="order-items" *ngFor="let item of order.cartItems">
+        <!-- p: Paragraph displaying item name, quantity, and price using interpolation. -->
+        <p>{{ item.name }} - {{ item.quantity }} x {{ item.price | currency }}</p>
+      </div>
+
+      <!-- p: Paragraph displaying "Total" followed by the specific 'order.total' amount formatted as currency. -->
+      <p class="order-total">Total: {{ order.total | currency }}</p>
+    </div>
+  </ng-container>
+</div>
+
+<!-- ngIf with *ngIf directive to display a message when there are no orders available. -->
+<div *ngIf="orders.length === 0" class="no-order-container">
+  <!-- p: Paragraph displaying a message when there are no orders available. -->
+  <p class="no-order-message">No order history available.</p>
+</div>

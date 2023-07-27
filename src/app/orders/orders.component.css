@@ -1,0 +1,70 @@
+/* Container to center the order history */
+.order-history-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Order Card */
+.order-card {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Order Card Header */
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Order ID */
+.order-id {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Shipping Details */
+.shipping-details {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Order Items */
+.order-items {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Total */
+.order-total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+/* Optional: Add more styles for other elements as needed */
+/* Container for "No order history" message */
+.no-order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Message text */
+.no-order-message {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Optional: Customize the appearance further as needed */

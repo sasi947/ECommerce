@@ -1,0 +1,49 @@
+/* Styling for the container div */
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    max-width: 400px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the buttons */
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Styling for the "Delete" button */
+  button.delete {
+    background-color: #dc3545;
+  }
+  
+  /* Styling for the "Cancel" button */
+  button.cancel {
+    background-color: #6c757d;
+  }
+  
+  /* Hover effect for buttons */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Centering the "Product not found" message */
+  div:not(.product-details) {
+    text-align: center;
+  }
+  

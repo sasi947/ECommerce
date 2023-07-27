@@ -1,38 +1,52 @@
-<div class="checkout">
-    <h1>Checkout</h1>
-    <div class="row">
-      <div class="col-sm-7">
-        <h3>Add shipping address</h3>
-        <p class="message-p">{{orderMsg}}</p>
-        <form #orderData="ngForm" class="common-form" (ngSubmit)="orderNow(orderData.value)">
-          <input
-            type="text"
-            class="form-input"
-            name="email"
-            placeholder="Enter User Email"
-            ngModel
-          />
-          <input
-            type="text"
-            class="form-input"
-            name="address"
-            placeholder="Enter User Address"
-            ngModel
-          />
-          <input
-            type="text"
-            class="form-input"
-            name="contact"
-            placeholder="Enter contact details"
-            ngModel
-          />
-          <button class="form-button">Order Now</button>
-        </form>
-      </div>
-      <div class="col-sm-5">
-          <h3>Total Amount: {{totalPrice}}</h3>
-          <h4>Payment Method : <b>Pay on delivery</b></h4>
-      </div>
+<app-user-home></app-user-home>
+
+<!-- Display checkout information if cart has items -->
+<div *ngIf="cartItems.length > 0" class="checkout-container">
+  <h2>Checkout</h2>
+  
+  <!-- Display each cart item as a card in a card-container using ngFor -->
+  <div class="card-container">
+    <div *ngFor="let item of cartItems; let i = index" class="card">
+      <p>{{ item.id }}</p>
+      <p>{{ item.color }}</p>
+      <h3>{{ item.name }}</h3>
+      <p>Quantity: {{ item.quantity }} x {{ item.price | currency }}</p>
     </div>
   </div>
   
+  <!-- Display the total price of all cart items -->
+  <h3 class="total">Total: {{ total | currency }}</h3>
+</div>
+
+<!-- Form to input shipping and payment details -->
+<div class="form">
+  <form (ngSubmit)="onSubmitForm()">
+    <!-- Shipping Details -->
+    <h3>Shipping Details</h3>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required [(ngModel)]="shippingDetails.name">
+    </div>
+    <div>
+      <label for="Mobile">Mobile:</label>
+      <input type="text" id="Mobile" name="Mobile" required [(ngModel)]="shippingDetails.mobile">
+    </div>
+    <div>
+      <label for="Email">Email:</label>
+      <input type="text" id="Email" name="Email" required [(ngModel)]="shippingDetails.Email">
+    </div>
+    <div>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required [(ngModel)]="shippingDetails.address">
+    </div><br>
+    <!-- Add more shipping fields as needed (e.g., city, country, postal code, etc.) -->
+    
+    <!-- Payment Details -->
+    <h3>Payment Details</h3>
+    <p>Payment Mode: Cash On Delivery</p>
+    
+    <!-- Button to submit the form and place the order -->
+    <button type="submit">Place Order</button>
+  </form>
+</div>
+

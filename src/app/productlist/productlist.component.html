@@ -1,0 +1,92 @@
+<!-- app-seller-home: This is a custom component representing the seller's home page. -->
+<app-seller-home></app-seller-home>
+
+<!-- ngIf with *ngIf directive to conditionally display the product list when there are products available. -->
+<div *ngIf="products.length > 0"><br>
+
+  <!-- h2: Heading displaying "Product List", aligned to the center and with bolder font-weight. -->
+  <h2 align="center" style="font-weight: bolder;">Product List</h2>
+
+  <!-- table: Table element to display the product details in a tabular format. -->
+  <table class="product-table">
+    <thead>
+      <tr>
+        <!-- th: Table header for "ID". -->
+        <th>ID</th>
+
+        <!-- th: Table header for "Images". -->
+        <th>Images</th>
+
+        <!-- th: Table header for "Name". -->
+        <th>Name</th>
+
+        <!-- th: Table header for "Description". -->
+        <th>Description</th>
+
+        <!-- th: Table header for "Color". -->
+        <th>Color</th>
+
+        <!-- th: Table header for "Price". -->
+        <th>Price</th>
+
+        <!-- th: Table header for "Stock". -->
+        <th>Stock</th>
+
+        <!-- th: Table header for "Categories". -->
+        <th>Categories</th>
+
+        <!-- th: Table header for "Actions". -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- tr with *ngFor directive to display product details for each 'product' in 'products'. -->
+      <tr *ngFor="let product of products">
+        <!-- td: Table cell displaying the product ID. -->
+        <td>{{ product.id }}</td>
+
+        <!-- td: Table cell displaying the product images. -->
+        <td>
+          <!-- div with *ngIf directive to check if product images exist and have length greater than 0. -->
+          <div *ngIf="product.images && product.images.length > 0">
+            <!-- div with *ngFor directive to loop through each 'image' in 'product.images' and display the image. -->
+            <div *ngFor="let image of product.images; let i = index">
+              <!-- img: Image tag displaying the product image with the specified width and height. -->
+              <img [src]="image" alt="Product Image" width="100" height="100">
+            </div>
+          </div>
+        </td>
+
+        <!-- td: Table cell displaying the product name. -->
+        <td>{{ product.name }}</td>
+
+        <!-- td: Table cell displaying the product description. -->
+        <td>{{ product.description }}</td>
+
+        <!-- td: Table cell displaying the product color. -->
+        <td>{{ product.color }}</td>
+
+        <!-- td: Table cell displaying the product price. -->
+        <td>{{ product.price }}</td>
+
+        <!-- td: Table cell displaying the product stock. -->
+        <td>{{ product.stock }}</td>
+
+        <!-- td: Table cell displaying the product categories joined with commas. -->
+        <td>{{ product.categories.join(', ') }}</td>
+
+        <!-- td: Table cell displaying action buttons for "Edit" and "Delete" operations on the product. -->
+        <td>
+          <button (click)="editProduct(product)">Edit</button>
+          <button (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ngIf with *ngIf directive to display a message when there are no products available. -->
+<div *ngIf="products.length === 0">
+  <!-- p: Paragraph displaying a message when there are no products available. -->
+  <p>No products available.</p>
+</div>

@@ -1,46 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { product } from '../data-type';
-import { ProductService } from '../services/product.service';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgModule } from '@angular/core';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faIcons } from '@fortawesome/free-solid-svg-icons';
+// Import required modules and services.
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-seller-home',
-  templateUrl: './seller-home.component.html',
-  styleUrls: ['./seller-home.component.css'],
+  selector: 'app-seller-home', // Component selector, it can be used in other templates as <app-seller-home></app-seller-home>.
+  templateUrl: './seller-home.component.html', // Template file for the component's view.
+  styleUrls: ['./seller-home.component.css'] // CSS styles specific to this component.
 })
-export class SellerHomeComponent implements OnInit {
-  productList: undefined | product[];
-  productMessage: undefined | string;
-  icon = faTrash;
-  iconEdit = faEdit;
+export class SellerHomeComponent {
+  constructor(private router: Router) {} // Inject the Router in the constructor.
 
-  constructor(private product: ProductService) {}
+  // Method to handle the logout functionality.
+  logout(): void {
+    // Show a confirmation alert before logging out.
+    const confirmLogout = window.confirm('Are you sure you want to log out?');
 
-  ngOnInit(): void {
-    this.list();
-  }
+    // If the user confirms the logout, proceed with the logout process.
+    if (confirmLogout) {
+      // Remove the seller data from the local storage to log the seller out.
+      localStorage.removeItem('seller');
 
-  deleteProduct(id: number) {
-    this.product.deleteProduct(id).subscribe((result) => {
-      if (result) {
-        this.productMessage = 'Product is deleted';
-        this.list();
-      }
-    });
-    setTimeout(() => {
-      this.productMessage = undefined;
-    }, 3000);
-  }
-
-  list() {
-    this.product.productList().subscribe((result) => {
-      if (result) {
-        this.productList = result;
-      }
-    });
+      // Navigate the user to the home page ('/') after successful logout.
+      this.router.navigate(['/']);
+    }
   }
 }

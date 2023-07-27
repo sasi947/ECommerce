@@ -1,0 +1,27 @@
+<!-- product-details-container: Container for displaying product details. -->
+<div class="product-details-container">
+
+  <!-- product-images: Container for displaying the product images. -->
+  <div class="product-images">
+    <!-- img: Image tag displaying the product image using interpolation for 'productDetails.images'. -->
+    <img src="{{ productDetails.images }}" alt="{{ productDetails.name }}">
+  </div>
+
+  <!-- product-card: Container for displaying product information. -->
+  <div class="product-card">
+    <!-- p: Paragraph displaying the product name using interpolation for 'productDetails.name'. -->
+    <p class="product-name">{{ productDetails.name }}</p>
+    <!-- p: Paragraph displaying the product price using interpolation for 'productDetails.price'. -->
+    <p class="product-price">${{ productDetails.price }}</p>
+    <!-- p: Paragraph displaying the product description using interpolation for 'productDetails.description'. -->
+    <p class="product-description">{{ productDetails.description }}</p>
+    <!-- p: Paragraph displaying the product stock using interpolation for 'productDetails.stock'. -->
+    <p class="product-stock">Stock: {{ productDetails.stock }} units available</p>
+    
+    <!-- button: Button to add the product to the cart, triggers 'addToCart()' method with a quantity of 1 when clicked. -->
+    <button class="add-to-cart-btn" (click)="addToCart(1)">Add to Cart</button>
+  </div>
+</div>
+
+<!-- button: Button to navigate to the home page, triggers 'navigateToHome()' method when clicked. -->
+<button (click)="navigateToHome()">Go to Home</button>

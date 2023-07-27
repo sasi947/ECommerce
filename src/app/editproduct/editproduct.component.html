@@ -1,0 +1,58 @@
+<!-- Seller Home Component -->
+<app-seller-home></app-seller-home>
+
+<!-- Heading for Edit Product -->
+<h2>Edit Product</h2>
+
+<!-- Product Edit Form -->
+<form (ngSubmit)="onSubmit()" #productForm="ngForm">
+  <!-- Name Input -->
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" [(ngModel)]="updatedProduct.name" required>
+
+  <!-- Description Textarea -->
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" [(ngModel)]="updatedProduct.description" required></textarea>
+
+  <!-- Price Input -->
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price" [(ngModel)]="updatedProduct.price" required>
+
+  <!-- Image Upload Input -->
+  <label for="imageUpload">Image Upload:</label>
+  <input type="file" (change)="onImageChange($event)" accept="image/*" />
+
+  <!-- Image Previews -->
+  <div *ngIf="updatedProduct.images.length > 0">
+    <div *ngFor="let imageUrl of updatedProduct.images; let i = index">
+      <img [src]="imageUrl" alt="Image Preview" width="100" height="100">
+      <button type="button" (click)="removeImage(i)">Remove</button>
+    </div>
+  </div>
+
+  <!-- Categories Select -->
+  <label for="categories">Categories:</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Select options</mat-label>
+    <mat-select [formControl]="selectedCategories" multiple required>
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Color Input -->
+  <label for="color">Product color:</label>
+  <input type="text" id="color" name="color" [(ngModel)]="updatedProduct.color" required>
+  <!-- Display error message if the color input is invalid and touched -->
+  <div *ngIf="productForm!.controls['color']?.invalid && productForm!.controls['color']?.touched" class="error-message">
+    Product color is required.
+  </div>
+
+  <!-- Stock Input -->
+  <label for="stock">Availability Stock:</label>
+  <input type="number" id="stock" name="stock" [(ngModel)]="updatedProduct.stock" required>
+
+  <!-- Disable the submit button until the form is valid -->
+  <button type="submit" [disabled]="!productForm!.valid">Save Changes</button>
+</form>

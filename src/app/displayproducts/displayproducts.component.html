@@ -1,0 +1,28 @@
+<!-- Product Container -->
+<div class="product-container">
+
+  <!-- Product Card - Displayed for each product in the 'products' array using ngFor -->
+  <div class="product-card" *ngFor="let product of products">
+
+    <!-- Image Container - Displayed if the product has one or more images -->
+    <div *ngIf="product.images.length > 0" class="image-container">
+
+      <!-- Image Wrapper - Displayed for each image URL in the 'product.images' array using ngFor -->
+      <div *ngFor="let imageUrl of product.images" class="image-wrapper">
+        <img [src]="imageUrl" alt="Product Image" width="200" height="200">
+      </div>
+    </div>
+
+    <!-- Product Name -->
+    <h3>{{ product.name }}</h3>
+
+    <!-- Product Description -->
+    <p><strong>Description:</strong> {{ product.description }}</p>
+
+    <!-- Product Price -->
+    <p><strong>Price:</strong> {{ product.price }}</p>
+
+    <!-- Link to Product Details Page - Uses 'routerLink' to navigate to the product details page -->
+    <a [routerLink]="['/product-details', product.id]">View Details</a>
+  </div>
+</div>

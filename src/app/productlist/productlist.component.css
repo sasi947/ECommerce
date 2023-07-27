@@ -1,0 +1,36 @@
+/* AddProductComponent CSS */
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .product-table th, .product-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .product-table th {
+    background-color: #f9f9f9;
+  }
+  
+  .product-images img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 5px;
+  }
+  
+  .product-table button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .product-table button:hover {
+    background-color: #0056b3;
+  }
+  

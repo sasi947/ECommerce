@@ -1,0 +1,77 @@
+<!-- Custom component for seller home page -->
+<app-seller-home></app-seller-home>
+
+<!-- Heading for the "Add Product" section -->
+<h2 align="center">Add Product</h2>
+
+<!-- Form for adding a new product with formGroup binding and ngSubmit event -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <!-- Product Name input field -->
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" formControlName="name" required>
+  <!-- Error message for Name input -->
+  <div *ngIf="productForm?.get('name')?.invalid && productForm?.get('name')?.touched" class="error-message" style="color: red;">
+    Name is required.
+  </div>
+
+  <!-- Product Description textarea -->
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" formControlName="description" required></textarea>
+  <!-- Error message for Description textarea -->
+  <div *ngIf="productForm?.get('description')?.invalid && productForm?.get('description')?.touched" class="error-message" style="color: red;">
+    Description is required.
+  </div>
+
+  <!-- Product Price input field -->
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price" formControlName="price" required>
+  <!-- Error message for Price input -->
+  <div *ngIf="productForm?.get('price')?.invalid && productForm?.get('price')?.touched" class="error-message" style="color: red;">
+    Price is required and must be a positive value.
+  </div>
+
+  <!-- Product Categories dropdown menu -->
+  <label for="categories">Categories:</label>
+  <mat-form-field appearance="fill">
+    <mat-label>Select options</mat-label>
+    <mat-select [formControl]="selectedOptions" multiple>
+      <!-- Loop through options array and create an option for each -->
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Input for adding a new category -->
+  <input type="text" [formControl]="newCategoryInput">
+  <!-- Button to add a new category -->
+  <button type="button" (click)="addNewCategory()">Add New Category</button>
+
+  <!-- Product Images input field (file upload) -->
+  <label for="images">Images:</label>
+  <input type="file" id="images" (change)="onImageChange($event)" multiple>
+  <!-- Display selected image names -->
+  <div *ngFor="let image of selectedImages">
+    {{ image.name }}
+  </div>
+
+  <!-- Product Color input field -->
+  <label for="color">Color:</label>
+  <input type="text" id="color" name="color" formControlName="color" required>
+  <!-- Error message for Color input -->
+  <div *ngIf="productForm?.get('color')?.invalid && productForm?.get('color')?.touched" class="error-message"style="color: red;">
+    Color is required.
+  </div>
+
+  <!-- Product Stock input field -->
+  <label for="stock">Availability Stock:</label>
+  <input type="number" id="stock" name="stock" formControlName="stock" required>
+  <!-- Error message for Stock input -->
+  <div *ngIf="productForm?.get('stock')?.invalid && productForm?.get('stock')?.touched" class="error-message"style="color: red;">
+    Availability Stock is required and must be a positive value.
+  </div>
+
+  <!-- Submit button for adding the product -->
+  <button type="submit">Add Product</button>
+</form>

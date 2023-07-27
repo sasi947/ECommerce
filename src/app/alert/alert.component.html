@@ -1,0 +1,23 @@
+<app-seller-home></app-seller-home>
+
+<!-- Container to display zero stock products -->
+<div class="zero-stock-container">
+  <h2>Zero Stock Products</h2>
+  
+  <!-- Show "Loading..." message if products are still being fetched -->
+  <p *ngIf="products.length === 0">Loading...</p>
+  
+  <!-- If products are available, display them in a list -->
+  <ul *ngIf="products.length > 0">
+    <!-- Loop through each product in the products array -->
+    <li *ngFor="let product of products">
+      <!-- Display product information if the stock is zero -->
+      <span *ngIf="product.stock === 0" class="zero-stock-product">
+        <p>Product ID: {{ product.id }}</p>
+        <p>Product Name: {{ product.name }}</p>
+        <p>Categories: {{ product.categories }}</p>
+        <p>Present Stock: {{ product.stock }}</p>
+      </span>
+    </li>
+  </ul>
+</div>

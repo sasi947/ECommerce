@@ -1,10 +1,127 @@
-.checkout h1{
-    text-align:center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-.checkout h3{
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
+/* Styling for the Checkout section */
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Card-like layout for the cart items */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card button {
+    margin-top: 10px;
+  }
+  
+  /* Total section style */
+  .total {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  /* Form fields style */
+  form {
+    background-color: #f9f9f9;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 150%;
+  }
+  .form{
+    position: absolute;
+    left:35%;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Customize the appearance of the form buttons */
+  .cart-buttons button {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .cart-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
