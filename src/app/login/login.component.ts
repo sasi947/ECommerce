@@ -18,6 +18,8 @@ export class LoginComponent {
 
   // Function triggered when the form is submitted.
   onSubmit(): void {
+    console.log("username",this.username);
+    console.log("password",this.password);
     // Call the login method of the AuthService and pass the entered username and password.
     // The login method will check if the credentials are valid and return a boolean.
     if (this.authService.login(this.username, this.password)) {

@@ -23,11 +23,15 @@ export class AuthService {
   login(username: string, password: string): boolean {
     // Check if the provided username exists in the users object and if the password matches
     if (this.users[username] && this.users[username].password === password) {
+      console.log("Login successful");
       // Save the current user's data to local storage
       localStorage.setItem(this.USER_KEY, JSON.stringify({ username, role: this.users[username].role }));
       return true; // Login successful
+
     }
+    console.log("Login Unsuccessful");
     return false; // Login failed
+
   }
 
   // Function to handle user logout
